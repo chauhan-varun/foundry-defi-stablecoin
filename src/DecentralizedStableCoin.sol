@@ -10,8 +10,9 @@ pragma solidity ^0.8.18;
  * Value (Relative Stability): Anchored (Pegged to USD)
  * Collateral Type: Crypto
  *
-* This is the contract meant to be owned by DSCEngine. It is a ERC20 token that can be minted and burned by the
-DSCEngine smart contract.
+ * This is the contract meant to be owned by DSCEngine. It is an ERC20 token that can be minted and burned by the
+ * DSCEngine smart contract.
+ * @custom:invariant Supply of DSC must always be less than or equal to total collateral value in USD.
  */
 
 import {ERC20Burnable, ERC20} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
