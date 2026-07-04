@@ -15,27 +15,46 @@ contract DecentralizedStableCoinTest is Test {
 
     function testRevertIfMintZeroDSC() public {
         vm.prank(dsc.owner());
-        vm.expectRevert();
+        vm.expectRevert(
+            DecentralizedStableCoin
+                .DecentralizedStableCoin__MintAmountIsLessThanEqualToZero
+                .selector
+        );
         dsc.mint(address(this), 0);
     }
 
     function testRevertIfBurnZeroDSC() public {
         vm.prank(dsc.owner());
         dsc.mint(address(this), 1000e18);
-        vm.expectRevert();
+        vm.expectRevert(
+            DecentralizedStableCoin
+                .DecentralizedStableCoin__BurnAmountIsLessThanEqualToZero
+                .selector
+        );
         dsc.burn(0);
     }
 
     function testRevertIfBurnMoreThanBalance() public {
         vm.prank(dsc.owner());
         dsc.mint(address(this), 1000e18);
-        vm.expectRevert();
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                DecentralizedStableCoin
+                    .DecentralizedStableCoin__BurnAmountExceedsBalance
+                    .selector,
+                1000e18
+            )
+        );
         dsc.burn(1001e18);
     }
 
     function testRevertIfMintToZeroAddress() public {
         vm.prank(dsc.owner());
-        vm.expectRevert();
+        vm.expectRevert(
+            DecentralizedStableCoin
+                .DecentralizedStableCoin__CantMintToZeroAddress
+                .selector
+        );
         dsc.mint(address(0), 1000e18);
     }
 }
