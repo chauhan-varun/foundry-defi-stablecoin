@@ -17,6 +17,16 @@ library OracleLib {
 
     uint256 private constant TIMEOUT = 3 hours;
 
+    /**
+     * @notice Fetches latest round data from Chainlink feed and validates freshness
+     * @param chainlinkFeed The Chainlink AggregatorV3Interface instance to query
+     * @return roundId The round identifier
+     * @return answer The price answer from the feed
+     * @return startedAt Timestamp when the round started
+     * @return updatedAt Timestamp when the round was updated
+     * @return answeredInRound Round ID in which the answer was computed
+     * @custom:throws OracleLib__StalePrice if data has not been updated within TIMEOUT
+     */
     function staleCheckLatestRoundData(
         AggregatorV3Interface chainlinkFeed
     ) public view returns (uint80, int256, uint256, uint256, uint80) {
