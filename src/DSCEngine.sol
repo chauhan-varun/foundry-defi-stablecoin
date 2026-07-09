@@ -82,7 +82,7 @@ contract DSCEngine is ReentrancyGuard {
     //////////////////////////////////////////////////////////////*/
 
     /// @notice Thrown when amount parameter is zero or negative
-    /// @dev Used across multiple functions to ensure valid amounts
+    /// @dev Used across deposit, mint, redeem, and burn operations to enforce positive value input
     error DSCEngine__AmountMustBeGreaterThanZero();
 
     /// @notice Thrown when token and price feed arrays have different lengths during construction
