@@ -45,4 +45,10 @@ contract OracleLibTest is StdCheats, Test {
         vm.expectRevert(OracleLib.OracleLib__StalePrice.selector);
         AggregatorV3Interface(address(aggregator)).staleCheckLatestRoundData();
     }
+
+    function testPricePassesOnFreshData() public {
+        (, int256 answer, , , ) = AggregatorV3Interface(address(aggregator))
+            .staleCheckLatestRoundData();
+        assertEq(answer, INITAL_PRICE);
+    }
 }
