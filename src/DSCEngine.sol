@@ -274,7 +274,7 @@ contract DSCEngine is ReentrancyGuard {
      * @param amountDscToMint The amount of DSC tokens to mint
      * @dev Convenience function that combines deposit and mint operations
      * @dev More gas efficient than calling both functions separately
-     * @dev Health factor is checked after both operations complete
+     * @dev Follows CEI pattern; Health factor is checked after both operations complete
      */
     function depositCollateralAndMintDsc(
         address tokenCollateral,
