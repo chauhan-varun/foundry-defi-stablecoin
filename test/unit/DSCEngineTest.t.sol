@@ -942,4 +942,14 @@ contract DSCEngineTest is Test {
         uint256 healthFactor = dscEngine.getHealthFactor(USER);
         assertEq(healthFactor, 1e18); // Exactly at liquidation threshold
     }
+
+    function testHealthFactorReturnsMaxUintIfNoDscMinted() public {
+        vm.startPrank(USER);
+        ERC20Mock(weth).approve(address(dscEngine), AMOUNT_COLLATERAL);
+        dscEngine.depositCollateral(weth, AMOUNT_COLLATERAL);
+        vm.stopPrank();
+
+        uint256 healthFactor = dscEngine.getHealthFactor(USER);
+        assertEq(healthFactor, type(uint256).max);
+    }
 }
