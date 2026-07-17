@@ -6,6 +6,7 @@ pragma solidity ^0.8.19;
 // // protocol must never be insolvent / undercollateralized
 // // users cant create stablecoins with a bad health factor
 // // a user should only be able to be liquidated if they have a bad health factor
+// // getter functions should never revert under any state fuzzing
 
 import {Test} from "forge-std/Test.sol";
 import {StdInvariant} from "forge-std/StdInvariant.sol";
