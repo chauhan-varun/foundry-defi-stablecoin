@@ -27,5 +27,8 @@ format:
 snapshot:
 	@forge snapshot
 
+gas-report:
+	@forge test --gas-report
+
 anvil:
 	@anvil -m 'test test test test test test test test test test test junk' --steps-tracing --block-time 1
