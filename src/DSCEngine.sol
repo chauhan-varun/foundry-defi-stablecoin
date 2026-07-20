@@ -293,8 +293,8 @@ contract DSCEngine is ReentrancyGuard {
      * @param tokenCollateral The address of the collateral token to redeem
      * @param amount The amount of collateral to redeem
      * @param amountDscToBurn The amount of DSC tokens to burn
-     * @dev Burns DSC first, then redeems collateral to ensure proper health factor
-     * @dev Health factor is checked after both operations to ensure position remains healthy
+     * @dev Burns DSC first to reduce debt, then redeems collateral to ensure proper health factor
+     * @dev Health factor is enforced strictly after state update (Health Factor must be >= 1.0)
      */
     function redeemCollateralForDsc(
         address tokenCollateral,
