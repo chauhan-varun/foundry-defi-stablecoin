@@ -952,4 +952,13 @@ contract DSCEngineTest is Test {
         uint256 healthFactor = dscEngine.getHealthFactor(USER);
         assertEq(healthFactor, type(uint256).max);
     }
+
+    function testRevertIfRedeemCollateralMoreThanDeposited() public {
+        vm.startPrank(USER);
+        ERC20Mock(weth).approve(address(dscEngine), AMOUNT_COLLATERAL);
+        dscEngine.depositCollateral(weth, AMOUNT_COLLATERAL);
+        vm.expectRevert();
+        dscEngine.redeemCollateral(weth, AMOUNT_COLLATERAL + 1 ether);
+        vm.stopPrank();
+    }
 }
