@@ -14,12 +14,13 @@
 5. [Invariants Specification](docs/INVARIANTS.md)
 6. [Gas Optimizations](docs/GAS_OPTIMIZATIONS.md)
 7. [Liquidator Bot Guide](docs/LIQUIDATOR_BOT.md)
-8. [Audit Checklist](docs/AUDIT_CHECKLIST.md)
-9. [Contracts](#contracts)
-10. [Health Factor & Liquidations](#health-factor--liquidations)
-11. [Getting Started](#getting-started)
-12. [Testing](#testing)
-13. [License](#license)
+8. [Slippage & Staleness Protection](docs/SLIPPAGE_PROTECTION.md)
+9. [Audit Checklist](docs/AUDIT_CHECKLIST.md)
+10. [Contracts](#contracts)
+11. [Health Factor & Liquidations](#health-factor--liquidations)
+12. [Getting Started](#getting-started)
+13. [Testing](#testing)
+14. [License](#license)
 
 ## Introduction
 
